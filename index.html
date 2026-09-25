@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jannatun Nayem Jui — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#faf1de;
@@ -255,9 +255,206 @@
     .interest-grid, .toolkit-grid, .becoming-grid{ grid-template-columns:1fr; }
     #s1 .right, #s2 .right, #s4 .right{ display:none; }
   }
+
+  /* ---------- PROFESSIONAL PORTFOLIO SYSTEM ---------- */
+  :root{
+    --cream:#f5f7f2;
+    --cream-2:#e9f0e8;
+    --green-dark:#173d32;
+    --green-mid:#2f6b55;
+    --green-soft:#b9d5c1;
+    --olive:#dfe9df;
+    --olive-dark:#476455;
+    --pink:#e5a1a8;
+    --gold:#8b6a2f;
+    --ink:#24332e;
+    --paper:#ffffff;
+    --shadow:0 18px 50px rgba(25,55,43,.12);
+  }
+  html{scroll-behavior:smooth;}
+  body{
+    display:block;
+    background:#e8efe8;
+    font-family:'DM Sans',sans-serif;
+  }
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    width:min(100%,1200px);
+    margin:0 auto;
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:28px;
+    background:rgba(245,247,242,.94);
+    border-bottom:1px solid rgba(23,61,50,.1);
+    backdrop-filter:blur(14px);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    color:var(--green-dark);
+    text-decoration:none;
+    font-size:.86rem;
+    font-weight:700;
+    letter-spacing:.02em;
+    white-space:nowrap;
+  }
+  .brand-mark{
+    width:34px;
+    height:34px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    color:#fff;
+    background:var(--green-dark);
+    font-size:.66rem;
+    letter-spacing:.05em;
+  }
+  .site-nav{display:flex;align-items:center;gap:25px;}
+  .site-nav a{
+    color:#587066;
+    text-decoration:none;
+    font-size:.78rem;
+    font-weight:600;
+    transition:color .2s ease;
+  }
+  .site-nav a:hover{color:var(--green-dark);}
+  .site-nav .nav-contact{
+    padding:9px 15px;
+    color:#fff;
+    background:var(--green-dark);
+    border-radius:4px;
+  }
+  .deck{width:min(100%,1200px);margin:0 auto 0;}
+  .stage{border-radius:0;box-shadow:none;background:var(--cream);}
+  .slide{min-height:0;scroll-margin-top:74px;}
+  .slide-inner{
+    width:min(100%,1120px);
+    min-height:500px;
+    margin:0 auto;
+    padding:104px 64px;
+  }
+  .slide + .slide{border-top:1px solid rgba(23,61,50,.1);}
+  .heading{
+    color:var(--green-dark);
+    font-family:'Fraunces',serif;
+    font-size:clamp(2rem,4vw,3.3rem);
+    line-height:1.05;
+    letter-spacing:0;
+    margin-bottom:26px;
+  }
+  .font-hand{font-family:'Fraunces',serif;}
+  .font-title{font-family:'Fraunces',serif;}
+  #s0{
+    min-height:calc(100vh - 71px);
+    background:var(--green-dark);
+    color:#eaf1eb;
+  }
+  #s0 .slide-inner{min-height:calc(100vh - 71px);padding-left:12%;justify-content:center;}
+  #s0 h1{max-width:700px;color:#f1f6ee;font-size:clamp(3.5rem,9vw,7.8rem);line-height:.92;letter-spacing:-.04em;}
+  #s0 .hero-kicker{
+    margin-bottom:24px;
+    color:#b9d5c1;
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+  }
+  #s0 .role{font-family:'DM Sans',sans-serif;color:#b9d5c1;font-size:.78rem;letter-spacing:.14em;margin-top:26px;}
+  #s0 .tagline{max-width:470px;margin-top:22px;color:#d4e1d6;font-size:1.08rem;line-height:1.65;}
+  #s0 .hero-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    width:max-content;
+    margin-top:30px;
+    padding:13px 17px;
+    color:var(--green-dark);
+    background:#eaf1eb;
+    text-decoration:none;
+    font-size:.8rem;
+    font-weight:700;
+    border-radius:3px;
+  }
+  #s0 .hero-link span{font-size:1.1rem;}
+  #s0 .leaf-shadow{left:auto;right:5%;bottom:-20px;width:390px;height:520px;opacity:.18;filter:none;fill:#8fb99b;}
+  #s0 .flower-corner{right:8%;bottom:14%;width:150px;opacity:.8;}
+  #s1,#s3,#s5,#s7,#s9{background:#fff;}
+  #s2,#s4,#s6,#s8{background:var(--cream);}
+  #s1 .slide-inner,#s2 .slide-inner,#s4 .slide-inner{align-items:center;}
+  #s1 .left,#s2 .left,#s4 .left{justify-content:center;}
+  #s1 p.intro,#s3 p.focus{font-size:1.05rem;line-height:1.75;color:#587066;}
+  #s1 .right,#s2 .right,#s4 .right{border-radius:3px;box-shadow:var(--shadow);}
+  .interest-grid{gap:12px;}
+  .interest-card{border:1px solid #d5e2d7;background:#f8fbf7;border-radius:3px;padding:24px 14px 15px;font-size:.9rem;}
+  .interest-card .num{width:28px;height:28px;top:-14px;background:var(--green-mid);font-family:'DM Sans',sans-serif;font-size:.75rem;}
+  #s2 .col-title{color:var(--green-mid);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;margin:21px 0 8px;}
+  #s2 ul,#s8 ul{color:#587066;line-height:1.9;}
+  .pill-row{gap:16px;}
+  .pill-box{background:var(--green-dark);color:#eaf1eb;border:0;border-radius:3px;padding:25px 26px;}
+  .pill-box h4,.toolkit-card h4{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;}
+  .pill-box ul{line-height:1.75;color:#cbdccf;}
+  .status-tag{background:#cfe4d2;border-radius:3px;box-shadow:none;color:var(--green-dark);font-size:.8rem;}
+  .timeline-card{background:#fff;border:1px solid #d5e2d7;border-radius:3px;padding:18px 22px 18px 36px;box-shadow:0 8px 24px rgba(25,55,43,.06);}
+  .timeline-card .tab{background:var(--green-mid);}
+  .timeline-card h4{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;}
+  .timeline-card p{color:#678075;line-height:1.5;}
+  #s5 .org{font-family:'DM Sans',sans-serif;color:var(--green-mid);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;}
+  .steps::before{background:#c6d9ca;}
+  .step-item .dot{background:var(--green-dark);color:#fff;border-radius:50%;font-family:'DM Sans',sans-serif;font-size:.75rem;}
+  .step-item h4{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;}
+  .step-item p,.footer-line{color:#678075;line-height:1.6;}
+  .toolkit-grid{gap:14px;}
+  .toolkit-card{background:var(--green-dark);border-radius:3px;padding:25px;color:#eef5ef;}
+  .toolkit-card p{color:#cbdccf;}
+  .becoming-grid{gap:14px;}
+  .becoming-card{border:1px solid #d5e2d7;border-radius:3px;padding:20px;background:#fff;}
+  .becoming-card .n{color:var(--green-mid);font-size:.75rem;letter-spacing:.12em;}
+  .becoming-card h4{font-family:'Fraunces',serif;font-size:1.15rem;}
+  .becoming-card p{color:#678075;line-height:1.55;}
+  #s8 .direction .label{color:var(--green-mid);font-family:'DM Sans',sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;}
+  #s8 .direction .flow{color:var(--green-dark);font-family:'Fraunces',serif;font-size:1.3rem;}
+  .quote{color:var(--green-mid);font-family:'Fraunces',serif;font-size:2rem;}
+  .thankyou-tape{background:var(--green-dark);padding:24px 42px;border-radius:3px;box-shadow:none;transform:none;}
+  .thankyou-tape h1{font-family:'Fraunces',serif;font-size:3.5rem;color:#f1f6ee;}
+  .pot-row{margin-top:44px;}
+
+  @media (max-width:760px){
+    .site-header{padding:14px 18px;}
+    .brand{font-size:.75rem;}
+    .site-nav{gap:12px;}
+    .site-nav a:not(.nav-contact){display:none;}
+    .site-nav .nav-contact{padding:8px 12px;}
+    .slide-inner{min-height:0;padding:76px 24px !important;}
+    #s0{min-height:calc(100vh - 63px);}
+    #s0 .slide-inner{min-height:calc(100vh - 63px);padding:70px 24px !important;align-items:flex-start;text-align:left;}
+    #s0 h1{font-size:clamp(3.2rem,16vw,5rem);}
+    #s0 .role{font-size:.68rem;line-height:1.6;}
+    #s0 .flower-corner{right:3%;bottom:7%;width:100px;}
+    .heading{font-size:2.15rem;}
+    #s1 .slide-inner,#s2 .slide-inner,#s4 .slide-inner{align-items:stretch;}
+  }
 </style>
 </head>
 <body>
+
+<header class="site-header">
+  <a class="brand" href="#s0" aria-label="Jannatun Nayem Jui home">
+    <span class="brand-mark">JNJ</span>
+    <span>Jannatun Nayem Jui</span>
+  </a>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <a href="#s1">About</a>
+    <a href="#s3">Research</a>
+    <a href="#s4">Fieldwork</a>
+    <a href="#s6">Toolkit</a>
+    <a class="nav-contact" href="#s9">Connect</a>
+  </nav>
+</header>
 
 <div class="deck">
   <div class="stage" id="stage">
@@ -266,9 +463,11 @@
     <section class="slide active" id="s0">
       <div class="slide-inner">
         <svg class="leaf-shadow" viewBox="0 0 200 260" fill="#000" opacity="1"><g opacity="0.25"><path d="M100 250 C 90 180 40 160 30 110 C 70 120 90 90 100 40 C 110 90 130 120 170 110 C 160 160 110 180 100 250 Z"/></g></svg>
+        <div class="hero-kicker">Botany undergraduate · researcher · explorer</div>
         <h1 class="font-hand">Jannatun Nayem Jui</h1>
         <div class="role">BOTANY UNDERGRADUATE&nbsp;|&nbsp;RESEARCH &amp; EXPLORATION</div>
         <div class="tagline">Exploring plant science through curiosity, practical learning, and sustainable research.</div>
+        <a class="hero-link" href="#s3">View my research <span aria-hidden="true">↘</span></a>
         <svg class="flower-corner" viewBox="0 0 100 140">
           <line x1="50" y1="60" x2="50" y2="135" stroke="#4a6b4e" stroke-width="3"/>
           <path d="M50 55 C20 45 15 20 30 5 C45 15 48 40 50 55Z" fill="#e79bb0"/>
