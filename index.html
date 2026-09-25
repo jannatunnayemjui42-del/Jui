@@ -29,41 +29,35 @@
     background:linear-gradient(180deg,#efe3c8,#e3d4ae);
     color:var(--ink);
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
   }
   .deck{
     width:min(96vw,1200px);
-    height:min(92vh,675px);
+    margin:24px auto 92px;
     position:relative;
-    perspective:1400px;
   }
   .stage{
     width:100%;
-    height:100%;
     border-radius:18px;
-    overflow:hidden;
+    overflow:visible;
     box-shadow:var(--shadow);
     background:var(--cream);
   }
   .slide{
-    position:absolute;
-    inset:0;
+    position:relative;
+    min-height:min(92vh,675px);
     background:var(--cream);
-    opacity:0;
-    transform:translateX(40px);
-    transition:opacity .5s ease, transform .5s ease;
-    pointer-events:none;
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
     display:flex;
     flex-direction:column;
+    scroll-margin-top:20px;
   }
-  .slide.active{
-    opacity:1;
-    transform:translateX(0);
-    pointer-events:auto;
-  }
-  .slide.prev{ transform:translateX(-40px); }
+  .slide + .slide{ border-top:1px solid rgba(107,90,62,.18); }
 
   .slide-inner{
     flex:1;
@@ -253,8 +247,14 @@
 
   /* ---------- NAV CONTROLS ---------- */
   .nav{
-    position:absolute; bottom:-56px; left:0; right:0;
+    position:fixed; bottom:18px; left:50%; z-index:10;
+    transform:translateX(-50%);
     display:flex; align-items:center; justify-content:center; gap:18px;
+    padding:8px 12px;
+    border-radius:28px;
+    background:rgba(250,241,222,.9);
+    box-shadow:0 6px 20px rgba(60,45,20,.16);
+    backdrop-filter:blur(8px);
   }
   .nav button{
     background:var(--green-dark); color:#fff; border:none; width:42px;height:42px;
@@ -270,18 +270,21 @@
   }
   .dot-btn.active{ opacity:1; background:var(--green-dark); width:22px; border-radius:5px; }
   .counter{
-    position:absolute; top:16px; right:22px; font-size:.8rem; color:var(--olive-dark);
+    position:fixed; top:16px; right:22px; z-index:10; font-size:.8rem; color:var(--olive-dark);
     font-weight:700; letter-spacing:.5px;
+    background:rgba(250,241,222,.9); padding:6px 10px; border-radius:12px;
   }
 
   @media (max-width:760px){
-    .deck{ height:88vh; }
+    .deck{ width:100%; margin:0 auto 84px; }
+    .stage{ border-radius:0; }
+    .slide{ min-height:100svh; }
     .slide-inner{ padding:26px 22px !important; }
     #s0 .slide-inner{ padding-left:22px !important; align-items:flex-end; text-align:right;}
     #s1 .slide-inner, #s2 .slide-inner, #s4 .slide-inner{ flex-direction:column !important; }
     .interest-grid, .toolkit-grid, .becoming-grid{ grid-template-columns:1fr; }
     #s1 .right, #s2 .right, #s4 .right{ display:none; }
-    .nav{ bottom:-48px; }
+    .nav{ bottom:12px; gap:12px; }
   }
 </style>
 </head>
@@ -559,14 +562,27 @@
   });
   const dotBtns = Array.from(dotsWrap.children);
 
-  function goTo(i){
-    if(i < 0 || i >= slides.length || i === current) return;
-    slides[current].classList.remove('active');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if(!visible) return;
+    const index = slides.indexOf(visible.target);
+    if(index === current) return;
     dotBtns[current].classList.remove('active');
-    current = i;
-    slides[current].classList.add('active');
+    current = index;
     dotBtns[current].classList.add('active');
     counter.textContent = (current+1) + ' / ' + slides.length;
+  }, {threshold:[0.45, 0.7]});
+  slides.forEach(slide => sectionObserver.observe(slide));
+
+  function goTo(i){
+    if(i < 0 || i >= slides.length || i === current) return;
+    dotBtns[current].classList.remove('active');
+    current = i;
+    dotBtns[current].classList.add('active');
+    counter.textContent = (current+1) + ' / ' + slides.length;
+    slides[current].scrollIntoView({behavior:'smooth', block:'start'});
   }
 
   document.getElementById('nextBtn').addEventListener('click', () => goTo(current+1));
