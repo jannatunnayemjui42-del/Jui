@@ -245,36 +245,6 @@
   .pot{ display:flex; flex-direction:column; align-items:center; }
   .pot svg{ width:64px; height:auto; }
 
-  /* ---------- NAV CONTROLS ---------- */
-  .nav{
-    position:fixed; bottom:18px; left:50%; z-index:10;
-    transform:translateX(-50%);
-    display:flex; align-items:center; justify-content:center; gap:18px;
-    padding:8px 12px;
-    border-radius:28px;
-    background:rgba(250,241,222,.9);
-    box-shadow:0 6px 20px rgba(60,45,20,.16);
-    backdrop-filter:blur(8px);
-  }
-  .nav button{
-    background:var(--green-dark); color:#fff; border:none; width:42px;height:42px;
-    border-radius:50%; font-size:1.2rem; cursor:pointer;
-    display:flex; align-items:center; justify-content:center;
-    transition:transform .15s ease, background .15s ease;
-  }
-  .nav button:hover{ background:var(--green-mid); transform:scale(1.08); }
-  .dots{ display:flex; gap:8px; }
-  .dot-btn{
-    width:9px;height:9px;border-radius:50%;background:#9a8a63;
-    border:none; cursor:pointer; padding:0; opacity:.5; transition:all .2s ease;
-  }
-  .dot-btn.active{ opacity:1; background:var(--green-dark); width:22px; border-radius:5px; }
-  .counter{
-    position:fixed; top:16px; right:22px; z-index:10; font-size:.8rem; color:var(--olive-dark);
-    font-weight:700; letter-spacing:.5px;
-    background:rgba(250,241,222,.9); padding:6px 10px; border-radius:12px;
-  }
-
   @media (max-width:760px){
     .deck{ width:100%; margin:0 auto 84px; }
     .stage{ border-radius:0; }
@@ -284,7 +254,6 @@
     #s1 .slide-inner, #s2 .slide-inner, #s4 .slide-inner{ flex-direction:column !important; }
     .interest-grid, .toolkit-grid, .becoming-grid{ grid-template-columns:1fr; }
     #s1 .right, #s2 .right, #s4 .right{ display:none; }
-    .nav{ bottom:12px; gap:12px; }
   }
 </style>
 </head>
@@ -540,69 +509,7 @@
 
   </div>
 
-  <div class="counter" id="counter">1 / 10</div>
-  <div class="nav">
-    <button id="prevBtn" aria-label="Previous slide">‹</button>
-    <div class="dots" id="dots"></div>
-    <button id="nextBtn" aria-label="Next slide">›</button>
-  </div>
 </div>
 
-<script>
-  const slides = Array.from(document.querySelectorAll('.slide'));
-  const dotsWrap = document.getElementById('dots');
-  const counter = document.getElementById('counter');
-  let current = 0;
-
-  slides.forEach((_, i) => {
-    const b = document.createElement('button');
-    b.className = 'dot-btn' + (i === 0 ? ' active' : '');
-    b.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(b);
-  });
-  const dotBtns = Array.from(dotsWrap.children);
-
-  const sectionObserver = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter(entry => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if(!visible) return;
-    const index = slides.indexOf(visible.target);
-    if(index === current) return;
-    dotBtns[current].classList.remove('active');
-    current = index;
-    dotBtns[current].classList.add('active');
-    counter.textContent = (current+1) + ' / ' + slides.length;
-  }, {threshold:[0.45, 0.7]});
-  slides.forEach(slide => sectionObserver.observe(slide));
-
-  function goTo(i){
-    if(i < 0 || i >= slides.length || i === current) return;
-    dotBtns[current].classList.remove('active');
-    current = i;
-    dotBtns[current].classList.add('active');
-    counter.textContent = (current+1) + ' / ' + slides.length;
-    slides[current].scrollIntoView({behavior:'smooth', block:'start'});
-  }
-
-  document.getElementById('nextBtn').addEventListener('click', () => goTo(current+1));
-  document.getElementById('prevBtn').addEventListener('click', () => goTo(current-1));
-
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'ArrowRight') goTo(current+1);
-    if(e.key === 'ArrowLeft') goTo(current-1);
-  });
-
-  // basic touch swipe support
-  let touchX = null;
-  document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
-  document.addEventListener('touchend', e => {
-    if(touchX === null) return;
-    const dx = e.changedTouches[0].clientX - touchX;
-    if(dx > 50) goTo(current-1);
-    if(dx < -50) goTo(current+1);
-    touchX = null;
-  });
-</script>
 </body>
 </html>
