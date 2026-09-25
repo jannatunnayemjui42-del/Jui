@@ -71,19 +71,6 @@
   .font-hand{ font-family:'Caveat',cursive; }
   .font-title{ font-family:'Baloo 2',cursive; }
 
-  /* decorative leaf shadow used on title slide */
-  .leaf-shadow{
-    position:absolute;
-    left:-40px; bottom:-30px;
-    width:340px; height:420px;
-    opacity:.35;
-    filter:blur(1px);
-  }
-  .flower-corner{
-    position:absolute; right:36px; bottom:28px;
-    width:120px;
-  }
-
   /* ---------- SLIDE 0 : TITLE ---------- */
   #s0 .slide-inner{ justify-content:center; align-items:flex-start; padding-left:40%; }
   #s0 h1{
@@ -381,8 +368,6 @@
     border-radius:3px;
   }
   #s0 .hero-link span{font-size:1.1rem;}
-  #s0 .leaf-shadow{left:auto;right:5%;bottom:-20px;width:390px;height:520px;opacity:.18;filter:none;fill:#8fb99b;}
-  #s0 .flower-corner{right:8%;bottom:14%;width:150px;opacity:.8;}
   #s1,#s3,#s5,#s7,#s9{background:#fff;}
   #s2,#s4,#s6,#s8{background:var(--cream);}
   #s1 .slide-inner,#s2 .slide-inner,#s4 .slide-inner{align-items:center;}
@@ -464,7 +449,6 @@
     #s0 .slide-inner{min-height:calc(100vh - 63px);padding:70px 24px !important;align-items:flex-start;text-align:left;}
     #s0 h1{font-size:clamp(3.2rem,16vw,5rem);}
     #s0 .role{font-size:.68rem;line-height:1.6;}
-    #s0 .flower-corner{right:3%;bottom:7%;width:100px;}
     .heading{font-size:2.15rem;}
     #s1 .slide-inner,#s2 .slide-inner,#s4 .slide-inner{align-items:stretch;}
     .site-footer{padding:48px 24px;}
@@ -499,12 +483,6 @@
         <div class="role">BOTANY UNDERGRADUATE&nbsp;|&nbsp;RESEARCH &amp; EXPLORATION</div>
         <div class="tagline">Botany undergraduate focused on plant biotechnology, tissue culture, sustainable research, and evidence-based field learning.</div>
         <a class="hero-link" href="#s3">View my research <span aria-hidden="true">↘</span></a>
-        <svg class="flower-corner" viewBox="0 0 100 140">
-          <line x1="50" y1="60" x2="50" y2="135" stroke="#4a6b4e" stroke-width="3"/>
-          <path d="M50 55 C20 45 15 20 30 5 C45 15 48 40 50 55Z" fill="#e79bb0"/>
-          <path d="M50 55 C55 30 75 15 90 25 C82 45 62 55 50 55Z" fill="#f0b9c9"/>
-          <path d="M50 90 C35 88 28 100 34 108 C42 106 48 98 50 90Z" fill="#6b8f4e"/>
-        </svg>
       </div>
     </section>
 
