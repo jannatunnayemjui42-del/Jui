@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jannatun Nayem Jui — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Baloo+2:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf1de;
+    --cream-2:#f3e8d0;
+    --green-dark:#2f4a34;
+    --green-mid:#4a6b4e;
+    --green-soft:#8bab84;
+    --olive:#8f7c5a;
+    --olive-dark:#6b5a3e;
+    --pink:#e79bb0;
+    --gold:#8a6d1f;
+    --ink:#2b2a26;
+    --paper:#fffaf0;
+    --shadow:0 10px 30px rgba(60,45,20,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    font-family:'Nunito',sans-serif;
+    background:linear-gradient(180deg,#efe3c8,#e3d4ae);
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .deck{
+    width:min(96vw,1200px);
+    height:min(92vh,675px);
+    position:relative;
+    perspective:1400px;
+  }
+  .stage{
+    width:100%;
+    height:100%;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    background:var(--cream);
+  }
+  .slide{
+    position:absolute;
+    inset:0;
+    background:var(--cream);
+    opacity:0;
+    transform:translateX(40px);
+    transition:opacity .5s ease, transform .5s ease;
+    pointer-events:none;
+    display:flex;
+    flex-direction:column;
+  }
+  .slide.active{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
+  }
+  .slide.prev{ transform:translateX(-40px); }
+
+  .slide-inner{
+    flex:1;
+    position:relative;
+    padding:48px 60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  h1,h2,h3{margin:0;}
+  .font-hand{ font-family:'Caveat',cursive; }
+  .font-title{ font-family:'Baloo 2',cursive; }
+
+  /* decorative leaf shadow used on title slide */
+  .leaf-shadow{
+    position:absolute;
+    left:-40px; bottom:-30px;
+    width:340px; height:420px;
+    opacity:.35;
+    filter:blur(1px);
+  }
+  .flower-corner{
+    position:absolute; right:36px; bottom:28px;
+    width:120px;
+  }
+
+  /* ---------- SLIDE 0 : TITLE ---------- */
+  #s0 .slide-inner{ justify-content:center; align-items:flex-start; padding-left:40%; }
+  #s0 h1{
+    font-size:clamp(2.4rem,5.2vw,4rem);
+    color:var(--green-dark);
+    line-height:1;
+  }
+  #s0 .role{
+    font-family:'Baloo 2',cursive;
+    letter-spacing:1px;
+    color:var(--green-mid);
+    font-size:1.15rem;
+    margin-top:14px;
+    font-weight:700;
+  }
+  #s0 .tagline{
+    margin-top:22px;
+    font-size:1.1rem;
+    color:var(--ink);
+    max-width:420px;
+    line-height:1.5;
+  }
+
+  /* ---------- generic heading style ---------- */
+  .heading{
+    font-family:'Baloo 2',cursive;
+    color:var(--green-dark);
+    font-size:clamp(1.6rem,3vw,2.3rem);
+    margin-bottom:22px;
+  }
+
+  /* ---------- SLIDE 1 : ABOUT + INTERESTS ---------- */
+  #s1 .slide-inner{ flex-direction:row; gap:36px; align-items:stretch; }
+  #s1 .left{ flex:1.3; display:flex; flex-direction:column; }
+  #s1 p.intro{ font-size:1.02rem; line-height:1.55; max-width:520px; margin-bottom:22px;}
+  .interest-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 20px; }
+  .interest-card{
+    position:relative;
+    background:var(--paper);
+    border:2px solid var(--green-dark);
+    border-radius:8px;
+    padding:26px 16px 14px;
+    text-align:center;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .interest-card .num{
+    position:absolute; top:-16px; left:50%; transform:translateX(-50%);
+    width:34px;height:34px;border-radius:50%;
+    background:var(--green-dark); color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Baloo 2',cursive; font-size:1rem;
+  }
+  #s1 .right{
+    flex:1; border-radius:10px; overflow:hidden;
+    background:linear-gradient(180deg,#a99160,#8f7a4c);
+    position:relative;
+  }
+  .greenhouse-icon{ width:100%; height:100%; }
+
+  /* ---------- SLIDE 2 : LEARNING ---------- */
+  #s2 .slide-inner{ flex-direction:row; gap:40px; }
+  #s2 .left{ flex:1.4; }
+  #s2 .col-title{ color:var(--gold); font-weight:800; font-size:1.15rem; margin:14px 0 6px; }
+  #s2 ul{ margin:0 0 8px; padding-left:20px; line-height:1.6; }
+  #s2 .right{ flex:1; border-radius:10px; overflow:hidden; }
+  .petri-icon{ width:100%; height:100%; }
+
+  /* ---------- SLIDE 3 : WASTE TO WEALTH ---------- */
+  #s3 p.focus{ font-size:1.02rem; line-height:1.5; margin-bottom:24px; max-width:900px;}
+  .pill-row{ display:flex; gap:26px; flex-wrap:wrap; }
+  .pill-box{
+    flex:1; min-width:300px;
+    background:var(--olive); color:#1c1c1c;
+    border:3px dotted var(--ink);
+    border-radius:26px;
+    padding:20px 24px;
+  }
+  .pill-box h4{ margin:0 0 10px; font-family:'Baloo 2',cursive; font-size:1.15rem; }
+  .pill-box ul{ margin:0; padding-left:20px; line-height:1.6; }
+  .status-tag{
+    margin-top:24px; display:inline-block;
+    background:var(--green-soft); color:var(--ink);
+    font-weight:800; padding:14px 20px; border-radius:10px;
+    box-shadow:0 6px 0 rgba(0,0,0,.08);
+  }
+
+  /* ---------- SLIDE 4 : EXPLORING BEYOND LAB ---------- */
+  #s4 .slide-inner{ flex-direction:row; gap:30px; }
+  #s4 .left{ flex:1.5; display:flex; flex-direction:column; gap:16px; overflow:auto; }
+  .timeline-card{
+    position:relative;
+    background:var(--paper);
+    border:2px solid var(--green-soft);
+    border-radius:24px 24px 24px 4px;
+    padding:14px 20px 14px 34px;
+  }
+  .timeline-card .tab{
+    position:absolute; left:-6px; top:8px; bottom:8px; width:22px;
+    background:var(--green-soft);
+    clip-path:polygon(0 0,100% 0,100% 78%,50% 100%,0 78%);
+  }
+  .timeline-card h4{ margin:0 0 6px; color:var(--ink); font-size:1.05rem; }
+  .timeline-card p{ margin:2px 0; font-size:.92rem; line-height:1.4; }
+  #s4 .right{ flex:1; border-radius:10px; overflow:hidden; }
+  .field-icon{ width:100%; height:100%; }
+
+  /* ---------- SLIDE 5 : BEYOND CLASSROOM ---------- */
+  #s5 .org{ font-family:'Baloo 2',cursive; color:var(--green-dark); font-weight:700; margin-bottom:18px; }
+  .steps{ position:relative; margin-left:20px; }
+  .steps::before{
+    content:""; position:absolute; left:15px; top:0; bottom:0; width:2px; background:var(--ink);
+  }
+  .step-item{ position:relative; padding-left:50px; margin-bottom:16px; }
+  .step-item .dot{
+    position:absolute; left:0; top:0; width:32px; height:32px;
+    background:var(--green-soft); border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2',cursive; font-weight:700; color:var(--ink);
+  }
+  .step-item h4{ margin:0 0 4px; font-size:1rem; }
+  .step-item p{ margin:0; font-size:.92rem; line-height:1.45; }
+  #s5 .footer-line{ margin-top:14px; font-weight:700; font-style:italic; font-size:.98rem; max-width:900px; }
+
+  /* ---------- SLIDE 6 : TOOLKIT ---------- */
+  .toolkit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .toolkit-card{
+    background:var(--olive); color:#fff; border-radius:14px 14px 0 14px;
+    padding:20px 22px;
+  }
+  .toolkit-card h4{ margin:0 0 10px; font-size:1.1rem; }
+  .toolkit-card p{ margin:0; line-height:1.55; font-size:.95rem; }
+
+  /* ---------- SLIDE 7 : JOURNEY OF LEARNING ---------- */
+  .becoming-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .becoming-card{
+    border:2px dashed #7fc4d8; border-radius:20px; padding:16px 20px; background:var(--paper);
+  }
+  .becoming-card .n{ font-weight:800; color:var(--green-dark); }
+  .becoming-card h4{ margin:2px 0 4px; font-style:italic; }
+  .becoming-card p{ margin:0; font-size:.92rem; line-height:1.4; }
+  #s7 .footer-line{ margin-top:18px; font-weight:700; color:var(--green-dark); }
+
+  /* ---------- SLIDE 8 : STILL LEARNING ---------- */
+  #s8 ul{ line-height:1.9; font-size:1.02rem; margin:10px 0 18px; padding-left:22px; }
+  .direction{ margin-top:6px; }
+  .direction .label{ color:#2b6cb0; font-weight:800; font-family:'Baloo 2',cursive; }
+  .direction .flow{ font-weight:700; font-size:1.05rem; }
+  .quote{ margin-top:14px; color:var(--gold); font-family:'Caveat',cursive; font-size:1.8rem; font-weight:700; }
+
+  /* ---------- SLIDE 9 : THANK YOU ---------- */
+  #s9 .slide-inner{ align-items:center; }
+  .thankyou-tape{
+    background:#e8e0cf; padding:20px 46px; transform:rotate(-1deg);
+    box-shadow:var(--shadow);
+  }
+  .thankyou-tape h1{ font-family:'Caveat',cursive; font-size:3.4rem; color:var(--olive-dark); }
+  .pot-row{ display:flex; gap:26px; margin-top:38px; align-items:flex-end; }
+  .pot{ display:flex; flex-direction:column; align-items:center; }
+  .pot svg{ width:64px; height:auto; }
+
+  /* ---------- NAV CONTROLS ---------- */
+  .nav{
+    position:absolute; bottom:-56px; left:0; right:0;
+    display:flex; align-items:center; justify-content:center; gap:18px;
+  }
+  .nav button{
+    background:var(--green-dark); color:#fff; border:none; width:42px;height:42px;
+    border-radius:50%; font-size:1.2rem; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .nav button:hover{ background:var(--green-mid); transform:scale(1.08); }
+  .dots{ display:flex; gap:8px; }
+  .dot-btn{
+    width:9px;height:9px;border-radius:50%;background:#9a8a63;
+    border:none; cursor:pointer; padding:0; opacity:.5; transition:all .2s ease;
+  }
+  .dot-btn.active{ opacity:1; background:var(--green-dark); width:22px; border-radius:5px; }
+  .counter{
+    position:absolute; top:16px; right:22px; font-size:.8rem; color:var(--olive-dark);
+    font-weight:700; letter-spacing:.5px;
+  }
+
+  @media (max-width:760px){
+    .deck{ height:88vh; }
+    .slide-inner{ padding:26px 22px !important; }
+    #s0 .slide-inner{ padding-left:22px !important; align-items:flex-end; text-align:right;}
+    #s1 .slide-inner, #s2 .slide-inner, #s4 .slide-inner{ flex-direction:column !important; }
+    .interest-grid, .toolkit-grid, .becoming-grid{ grid-template-columns:1fr; }
+    #s1 .right, #s2 .right, #s4 .right{ display:none; }
+    .nav{ bottom:-48px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="deck">
+  <div class="stage" id="stage">
+
+    <!-- SLIDE 0 -->
+    <section class="slide active" id="s0">
+      <div class="slide-inner">
+        <svg class="leaf-shadow" viewBox="0 0 200 260" fill="#000" opacity="1"><g opacity="0.25"><path d="M100 250 C 90 180 40 160 30 110 C 70 120 90 90 100 40 C 110 90 130 120 170 110 C 160 160 110 180 100 250 Z"/></g></svg>
+        <h1 class="font-hand">Jannatun Nayem Jui</h1>
+        <div class="role">BOTANY UNDERGRADUATE&nbsp;|&nbsp;RESEARCH &amp; EXPLORATION</div>
+        <div class="tagline">Exploring plant science through curiosity, practical learning, and sustainable research.</div>
+        <svg class="flower-corner" viewBox="0 0 100 140">
+          <line x1="50" y1="60" x2="50" y2="135" stroke="#4a6b4e" stroke-width="3"/>
+          <path d="M50 55 C20 45 15 20 30 5 C45 15 48 40 50 55Z" fill="#e79bb0"/>
+          <path d="M50 55 C55 30 75 15 90 25 C82 45 62 55 50 55Z" fill="#f0b9c9"/>
+          <path d="M50 90 C35 88 28 100 34 108 C42 106 48 98 50 90Z" fill="#6b8f4e"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SLIDE 1 -->
+    <section class="slide" id="s1">
+      <div class="slide-inner">
+        <div class="left">
+          <h2 class="heading">A Little About My Journey</h2>
+          <p class="intro">I am a Botany undergraduate at the University of Barishal, interested in understanding plants beyond textbooks — through laboratory work, research, field exploration, and practical learning.</p>
+          <h3 class="heading" style="font-size:1.3rem;">Areas of Interest</h3>
+          <div class="interest-grid">
+            <div class="interest-card"><span class="num">1</span>Plant Biotechnology</div>
+            <div class="interest-card"><span class="num">2</span>Tissue Culture &amp; Micropropagation</div>
+            <div class="interest-card"><span class="num">3</span>Sustainable Agriculture</div>
+            <div class="interest-card"><span class="num">4</span>Research &amp; Exploration</div>
+          </div>
+        </div>
+        <div class="right">
+          <svg class="greenhouse-icon" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="300" fill="#8f7a4c"/>
+            <polygon points="150,30 190,70 110,70" fill="#7a6640"/>
+            <rect x="20" y="70" width="260" height="200" fill="none" stroke="#c9b98a" stroke-width="4"/>
+            <line x1="90" y1="70" x2="90" y2="270" stroke="#c9b98a" stroke-width="3"/>
+            <line x1="150" y1="70" x2="150" y2="270" stroke="#c9b98a" stroke-width="3"/>
+            <line x1="210" y1="70" x2="210" y2="270" stroke="#c9b98a" stroke-width="3"/>
+            <line x1="20" y1="170" x2="280" y2="170" stroke="#c9b98a" stroke-width="3"/>
+            <g fill="#c9dcb0">
+              <ellipse cx="55" cy="120" rx="14" ry="8"/>
+              <ellipse cx="120" cy="115" rx="14" ry="8"/>
+              <ellipse cx="180" cy="120" rx="14" ry="8"/>
+              <ellipse cx="245" cy="115" rx="14" ry="8"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section class="slide" id="s2">
+      <div class="slide-inner">
+        <div class="left">
+          <h2 class="heading">Learning Through Study &amp; Practice</h2>
+          <div class="col-title">Plant Science</div>
+          <ul>
+            <li>Taxonomy &amp; Plant Identification</li>
+            <li>Plant Biotechnology</li>
+            <li>Tissue Culture &amp; Micropropagation</li>
+          </ul>
+          <div class="col-title">Practical Exposure</div>
+          <ul>
+            <li>Anatomical sectioning</li>
+            <li>Microscopic observation</li>
+            <li>Herbarium preparation &amp; documentation</li>
+            <li>Plant identification &amp; scientific nomenclature</li>
+            <li>Observation of meiotic stages</li>
+          </ul>
+        </div>
+        <div class="right">
+          <svg class="petri-icon" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="300" fill="#eef1ee"/>
+            <circle cx="90" cy="200" r="45" fill="none" stroke="#c8cfc4" stroke-width="4"/>
+            <circle cx="200" cy="220" r="50" fill="none" stroke="#c8cfc4" stroke-width="4"/>
+            <circle cx="150" cy="120" r="40" fill="none" stroke="#c8cfc4" stroke-width="4"/>
+            <path d="M150 120 q10 -60 30 -80" stroke="#6b8f4e" stroke-width="4" fill="none"/>
+            <path d="M90 200 q-10 -20 10 -30" stroke="#6b8f4e" stroke-width="4" fill="none"/>
+            <path d="M200 220 q20 -10 25 -35" stroke="#6b8f4e" stroke-width="4" fill="none"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section class="slide" id="s3">
+      <div class="slide-inner">
+        <h2 class="heading">Waste to Wealth — Ongoing Course Research Project</h2>
+        <p class="focus"><strong>Research Focus:</strong> Exploring low-cost micropropagation of spinach using locally available organic waste as alternative culture-media components.</p>
+        <div class="pill-row">
+          <div class="pill-box">
+            <h4>Materials Being Explored</h4>
+            <ul><li>Eggshell</li><li>Banana Peel</li><li>Potato Peel</li></ul>
+          </div>
+          <div class="pill-box">
+            <h4>Learning Through the Research</h4>
+            <ul>
+              <li>Tissue culture &amp; micropropagation</li>
+              <li>Literature exploration</li>
+              <li>Research proposal development</li>
+              <li>Scientific documentation</li>
+              <li>Sustainable approaches to plant biotechnology</li>
+            </ul>
+          </div>
+        </div>
+        <div class="status-tag">Status: Ongoing &nbsp;|&nbsp; Course Research Project</div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 -->
+    <section class="slide" id="s4">
+      <div class="slide-inner">
+        <div class="left">
+          <h2 class="heading" style="margin-bottom:14px;">Exploring Plants Beyond the Lab</h2>
+          <div class="timeline-card"><div class="tab"></div>
+            <h4>Sundarbans — Exploring a Natural Ecosystem</h4>
+            <p>Observed diverse plant species and vegetation patterns.</p>
+            <p>Explored how plants adapt to their habitat and environment.</p>
+            <p>Gained a broader understanding of the connection between plants, nature, and people.</p>
+          </div>
+          <div class="timeline-card"><div class="tab"></div>
+            <h4>BSRI, Pabna — Exploring Sugarcrops</h4>
+            <p>Learned about sugar crops and their cultivation.</p>
+            <p>Explored applied agricultural research and crop-related practices.</p>
+          </div>
+          <div class="timeline-card"><div class="tab"></div>
+            <h4>Pulse Research Centre</h4>
+            <p>Explored research related to pulse crops.</p>
+            <p>Learned about crop improvement and agricultural research practices.</p>
+          </div>
+        </div>
+        <div class="right">
+          <svg class="field-icon" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="300" fill="#cfe8f5"/>
+            <rect y="180" width="300" height="120" fill="#7a6640"/>
+            <g stroke="#3f6b34" stroke-width="4">
+              <line x1="40" y1="220" x2="30" y2="100"/>
+              <line x1="70" y1="220" x2="65" y2="90"/>
+              <line x1="100" y1="220" x2="95" y2="110"/>
+              <line x1="140" y1="220" x2="135" y2="95"/>
+              <line x1="180" y1="220" x2="178" y2="105"/>
+              <line x1="220" y1="220" x2="215" y2="90"/>
+              <line x1="260" y1="220" x2="258" y2="110"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 -->
+    <section class="slide" id="s5">
+      <div class="slide-inner">
+        <h2 class="heading">Beyond Classroom to Explore Myself</h2>
+        <div class="org">YSSE — Youth School for Social Entrepreneurs</div>
+        <div class="steps">
+          <div class="step-item"><div class="dot">1</div>
+            <h4>Intern of Communication Department</h4>
+            <p>Aug – Dec 2025 → Developed organizational communication and teamwork experience.</p>
+          </div>
+          <div class="step-item"><div class="dot">2</div>
+            <h4>Management Trainee of COM</h4>
+            <p>Dec 2025 – Apr 2026 → Led social media activities and coordinated digital communication.</p>
+          </div>
+          <div class="step-item"><div class="dot">3</div>
+            <h4>Head of SMM</h4>
+            <p>Apr – 20 Sep 2026 → Worked on team coordination, project planning, and technology-related initiatives.</p>
+          </div>
+          <div class="step-item"><div class="dot">4</div>
+            <h4>Assistant Head of IT Department</h4>
+            <p>Sep 2026 – Present → Continuing involvement in IT planning, coordination, and project development.</p>
+          </div>
+        </div>
+        <p class="footer-line">Beyond academics, these experiences helped me explore leadership, responsibility, teamwork, communication, and my own ability to learn and contribute.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 -->
+    <section class="slide" id="s6">
+      <div class="slide-inner">
+        <h2 class="heading">My Current Toolkit</h2>
+        <div class="toolkit-grid">
+          <div class="toolkit-card">
+            <h4>Scientific &amp; Laboratory</h4>
+            <p>Tissue Culture • Micropropagation • Microscopy • Plant Identification • Herbarium</p>
+          </div>
+          <div class="toolkit-card">
+            <h4>Research &amp; Academic</h4>
+            <p>Literature Search • Proposal Development • Scientific Documentation</p>
+          </div>
+          <div class="toolkit-card">
+            <h4>Digital</h4>
+            <p>Google Workspace • MS Office • Canva • AI Tools</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 -->
+    <section class="slide" id="s7">
+      <div class="slide-inner">
+        <h2 class="heading">My Journey of Learning &amp; Becoming</h2>
+        <div class="becoming-grid">
+          <div class="becoming-card"><span class="n">01</span><h4>Identify</h4><p>Understand my interests, fears, strengths, and the areas I want to grow in.</p></div>
+          <div class="becoming-card"><span class="n">02</span><h4>Face the Fear</h4><p>Step beyond my comfort zone and keep moving, even when I feel afraid.</p></div>
+          <div class="becoming-card"><span class="n">03</span><h4>Don't Give Up</h4><p>Learn from mistakes, setbacks, and difficult moments without giving up.</p></div>
+          <div class="becoming-card"><span class="n">04</span><h4>Grow Through Practice</h4><p>Keep practicing, improving, and going deeper into the things I choose to pursue.</p></div>
+          <div class="becoming-card"><span class="n">05</span><h4>Build Confidence</h4><p>Let experience and progress rebuild my trust in myself.</p></div>
+          <div class="becoming-card"><span class="n">06</span><h4>Explore Myself</h4><p>Discover what I can do, what I value, what I enjoy, and who I want to become.</p></div>
+        </div>
+        <p class="footer-line">Learning is not only about becoming better at something — it is also about discovering myself along the way.</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 -->
+    <section class="slide" id="s8">
+      <div class="slide-inner">
+        <h2 class="heading">Still Learning. Still Growing.</h2>
+        <p style="max-width:640px;line-height:1.55;">I want to keep learning — not only to build a career, but to build a life that feels meaningful, positive, and simple. I want to learn to:</p>
+        <ul>
+          <li>Stay curious and explore deeply.</li>
+          <li>Turn knowledge into practical work.</li>
+          <li>Lead with empathy and responsibility.</li>
+          <li>Grow without making life unnecessarily complicated.</li>
+        </ul>
+        <div class="direction">
+          <span class="label">My Direction</span><br>
+          <span class="flow">Learn → Explore → Create → Contribute → Grow</span>
+        </div>
+        <div class="quote">"A simple life, a curious mind, and meaningful work."</div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 -->
+    <section class="slide" id="s9">
+      <div class="slide-inner">
+        <div class="thankyou-tape"><h1>✦ Thank You ✦</h1></div>
+        <div class="pot-row">
+          <div class="pot"><svg viewBox="0 0 60 80"><rect x="14" y="55" width="32" height="20" rx="3" fill="#b5713e"/><ellipse cx="30" cy="55" rx="4" ry="2" fill="#7a4b28"/></svg></div>
+          <div class="pot"><svg viewBox="0 0 60 80"><rect x="14" y="55" width="32" height="20" rx="3" fill="#b5713e"/><line x1="30" y1="55" x2="30" y2="35" stroke="#4a7a3e" stroke-width="3"/></svg></div>
+          <div class="pot"><svg viewBox="0 0 60 80"><rect x="14" y="55" width="32" height="20" rx="3" fill="#b5713e"/><line x1="30" y1="55" x2="30" y2="25" stroke="#4a7a3e" stroke-width="3"/><path d="M30 40 q-10 -6 -14 2" stroke="#4a7a3e" stroke-width="3" fill="none"/><path d="M30 35 q10 -6 14 2" stroke="#4a7a3e" stroke-width="3" fill="none"/></svg></div>
+          <div class="pot"><svg viewBox="0 0 60 80"><rect x="14" y="55" width="32" height="20" rx="3" fill="#b5713e"/><line x1="30" y1="55" x2="30" y2="15" stroke="#4a7a3e" stroke-width="3"/><ellipse cx="20" cy="30" rx="8" ry="5" fill="#78ab5e"/><ellipse cx="40" cy="24" rx="8" ry="5" fill="#78ab5e"/><circle cx="30" cy="15" r="6" fill="#e79bb0"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="counter" id="counter">1 / 10</div>
+  <div class="nav">
+    <button id="prevBtn" aria-label="Previous slide">‹</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn" aria-label="Next slide">›</button>
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.className = 'dot-btn' + (i === 0 ? ' active' : '');
+    b.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(b);
+  });
+  const dotBtns = Array.from(dotsWrap.children);
+
+  function goTo(i){
+    if(i < 0 || i >= slides.length || i === current) return;
+    slides[current].classList.remove('active');
+    dotBtns[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    dotBtns[current].classList.add('active');
+    counter.textContent = (current+1) + ' / ' + slides.length;
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current+1));
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current-1));
+
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'ArrowRight') goTo(current+1);
+    if(e.key === 'ArrowLeft') goTo(current-1);
+  });
+
+  // basic touch swipe support
+  let touchX = null;
+  document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    if(touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if(dx > 50) goTo(current-1);
+    if(dx < -50) goTo(current+1);
+    touchX = null;
+  });
+</script>
+</body>
+</html>
