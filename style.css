@@ -1,20 +1,21 @@
 :root {
   color-scheme: light;
   --page: #FFFFFF;
-  --section: #F7F8F3;
-  --surface: #FFFFFF;
-  --surface-alt: #F0F2E9;
-  --text: #4B5436;
-  --muted: #6D7556;
-  --muted-palette: #737B5D;
-  --accent: #737D50;
-  --accent-text: #4B5436;
-  --accent-palette: #737D50;
-  --border: #DDE1D2;
-  --button: #4B5436;
+  --section: #E6EBDD;
+  --surface: #F4F6F0;
+  --surface-alt: #E6EBDD;
+  --text: #354D3A;
+  --heading-color: #143324;
+  --muted: #354D3A;
+  --muted-palette: #354D3A;
+  --accent: #6B7545;
+  --accent-text: #143324;
+  --accent-palette: #6B7545;
+  --border: #D5DDCE;
+  --button: #6B7545;
   --button-text: #FFFFFF;
-  --focus: #4B5436;
-  --shadow: 0 8px 18px rgba(75, 84, 54, .08);
+  --focus: #143324;
+  --shadow: 0 8px 18px rgba(20, 51, 36, .08);
   --heading: "Manrope", Arial, sans-serif;
   --body: "Inter", Arial, sans-serif;
   --display: "DM Serif Display", Georgia, serif;
@@ -22,21 +23,22 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --page: #48563E;
-  --section: #56664A;
-  --surface: #647456;
-  --surface-alt: #56664A;
-  --text: #F5F5ED;
-  --muted: #F4F4EC;
-  --muted-palette: #D1D8C8;
-  --accent: #A5B48B;
-  --accent-text: #F4F4EC;
-  --accent-palette: #A5B48B;
-  --border: #758367;
-  --button: #A5B48B;
-  --button-text: #30372A;
-  --focus: #D1D8C8;
-  --shadow: 0 8px 18px rgba(23, 32, 17, .14);
+  --page: #10251C;
+  --section: #193B2B;
+  --surface: #193B2B;
+  --surface-alt: #28523A;
+  --text: #F0F4EF;
+  --heading-color: #F0F4EF;
+  --muted: #B6CDB7;
+  --muted-palette: #B6CDB7;
+  --accent: #28523A;
+  --accent-text: #F0F4EF;
+  --accent-palette: #28523A;
+  --border: #355542;
+  --button: #28523A;
+  --button-text: #F0F4EF;
+  --focus: #B6CDB7;
+  --shadow: 0 8px 18px rgba(0, 0, 0, .2);
 }
 
 * { box-sizing: border-box; }
@@ -148,7 +150,7 @@ button { font: inherit; }
   text-transform: uppercase;
 }
 h1, h2, h3, h4, p { margin-top: 0; }
-h1, h2, h3, h4 { color: var(--text); }
+h1, h2, h3, h4 { color: var(--heading-color); }
 h2 {
   margin-bottom: 0;
   font: 700 clamp(2.1rem, 4vw, 3.35rem)/1.12 var(--heading);
@@ -242,7 +244,7 @@ h4 { font: 700 1rem/1.45 var(--heading); }
 .vision-card li + li { margin-top: 3px; }
 .vision-card blockquote { margin: 0; font: 400 .9rem/1.85 var(--body); }
 
-.interest-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+#academics .interest-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .interest-card, .practical-card {
   min-width: 0;
   padding: 22px;
@@ -251,9 +253,30 @@ h4 { font: 700 1rem/1.45 var(--heading); }
   border-radius: 5px;
   transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.interest-card { display: flex; min-height: 132px; align-items: center; }
+#academics .interest-card {
+  display: flex;
+  min-height: 132px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 9px;
+}
 .interest-card:hover, .practical-card:hover { border-color: var(--accent); box-shadow: var(--shadow); transform: translateY(-1px); }
-.interest-card h3 { margin: 0; font-size: 1rem; }
+#academics .interest-card:hover {
+  background: var(--surface-alt);
+}
+#academics h2, #academics .interest-card h3 {
+  font-family: "Newsreader", Georgia, serif;
+}
+#academics h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+#academics .section-intro { color: var(--muted); font-family: "Figtree", Arial, sans-serif; }
+#academics .interest-card { font-family: "Figtree", Arial, sans-serif; }
+#academics .interest-card h3 { margin: 0; font-size: 1.2rem; font-weight: 600; line-height: 1.35; }
+#academics .interest-card p { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.65; }
 .practical-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 13px; }
 .practical-card { min-height: 190px; }
 .practical-card h4 { margin: 0; font-size: .96rem; }
@@ -390,9 +413,8 @@ h4 { font: 700 1rem/1.45 var(--heading); }
   .experience-layout { grid-template-columns: 1fr; gap: 27px; }
   .vision-grid { grid-template-columns: 1fr; }
   .vision-card { padding: 21px; }
-  .interest-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .interest-card { min-height: 136px; padding: 18px; }
-  .interest-card h3 { font-size: .91rem; }
+  #academics .interest-grid { grid-template-columns: 1fr; gap: 20px; }
+  #academics .interest-card { min-height: 112px; padding: 20px; }
   .practical-grid { gap: 10px; }
   .practical-card { min-height: 200px; padding: 18px; }
   .fieldwork-grid { grid-template-columns: 1fr; gap: 14px; }
