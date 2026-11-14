@@ -1,54 +1,23 @@
-# Jannatun Nayem Jui — Interactive Portfolio
+# Jannatun Nayem Jui — Portfolio
 
-A single-file, interactive recreation of your portfolio deck. It renders every slide from the original document as a swipeable/clickable presentation instead of a static PDF, with the same cream-and-botanical look (dark green headings, olive info boxes, hand-drawn accents).
+A responsive academic portfolio for Botany student Jannatun Nayem Jui. The site uses a Burgundy Slate palette and includes sections for academic interests, fieldwork, practical learning, leadership, skills, future vision, and contact.
 
 ## Files
 
-- `index.html` — the entire site (HTML, CSS, and JavaScript in one file). Open it directly in any browser — no build step, no server required.
+- `index.html` — semantic page structure and portfolio content.
+- `style.css` — responsive layout, colors, typography, and subtle reveal effects.
+- `script.js` — mobile navigation, placeholder links, and reveal behavior.
 
-## How to view it
+## View locally
 
-1. Double-click `index.html`, or right-click → **Open with** → your browser.
-2. That's it — it works fully offline except for loading two Google Fonts (Caveat, Baloo 2) on first view.
+Open `index.html` in a browser. Google Fonts load from the web; the rest of the site is static HTML, CSS, and vanilla JavaScript.
 
-## Controls
+## Add your own assets
 
-| Action | How |
-|---|---|
-| Next slide | Click the `›` button, press the **Right Arrow** key, or swipe left on mobile |
-| Previous slide | Click the `‹` button, press the **Left Arrow** key, or swipe right on mobile |
-| Jump to a slide | Click any dot in the dot row at the bottom |
+- Field photographs can be added under `assets/images/fieldwork/sundarbans/`, `assets/images/fieldwork/bsri/`, and `assets/images/fieldwork/pulses-research-centre/`.
+- Add your PDF as `assets/documents/Jannatun_Nayem_Jui_CV.pdf` for the CV card to open and download it.
+- Replace the LinkedIn, email, and GitHub placeholder cards in `index.html` when you have the actual contact details.
 
-## Slides included
+## Publish
 
-1. Title — Jannatun Nayem Jui
-2. A Little About My Journey + Areas of Interest
-3. Learning Through Study & Practice
-4. Waste to Wealth — Ongoing Course Research Project
-5. Exploring Plants Beyond the Lab
-6. Beyond Classroom to Explore Myself
-7. My Current Toolkit
-8. My Journey of Learning & Becoming
-9. Still Learning. Still Growing.
-10. Thank You
-
-## Customizing
-
-Everything lives in `index.html`, organized top to bottom:
-
-- **`<style>` block** — color variables are defined once at the top under `:root` (e.g. `--cream`, `--green-dark`, `--olive`). Change a variable there to re-theme the whole deck.
-- **`<body>` section** — each slide is a `<section class="slide" id="sN">`. Edit the text directly inside the matching section to update content.
-- **`<script>` block** — controls slide navigation (buttons, keyboard arrows, dot indicators, swipe). You shouldn't need to touch this unless you want to change how navigation behaves (e.g. auto-advance, different transition style).
-
-### Adding a new slide
-
-1. Copy an existing `<section class="slide" id="sN">...</section>` block, give it a new unique `id`, and edit its content.
-2. Place it wherever you want it to appear in the sequence — order in the HTML is the slide order.
-3. No JavaScript changes needed — the script automatically detects all `.slide` elements and builds the dots/counter for you.
-
-## Hosting it online
-
-Since it's a single static HTML file, you can publish it anywhere for free:
-- **GitHub Pages** — push this folder to a repo and enable Pages.
-- **Netlify / Vercel** — drag-and-drop the folder into their dashboard.
-- Or simply email/share the `index.html` file — it opens the same way anywhere.
+This static site can be hosted on GitHub Pages or another static web host.
