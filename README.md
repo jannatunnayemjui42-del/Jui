@@ -20,8 +20,7 @@ Open `index.html` in a browser. The page is static HTML, CSS, and vanilla JavaSc
   - `assets/images/fieldwork/bsri/`
   - `assets/images/fieldwork/pulses-research-centre/`
   Replace each clearly marked photo frame in `index.html` with an image and descriptive `alt` text. Use landscape images where possible.
-- Certificate scans or photos: add image files to `assets/images/certificates/`.
-- Certificate PDFs: add original files to `assets/documents/certificates/`. Add a gallery card only after the actual certificate title, issuing organization, and date are known. Link each card directly to its original image or PDF and open it in a new tab.
+- Certificate previews and originals: the three supplied certificates are in `assets/documents/certificates/` and are embedded in the gallery with links that open the original PDFs in a new tab. Add certificate images to `assets/images/certificates/`; add new PDF originals to `assets/documents/certificates/`. Create a gallery card only after the actual title, issuing organization, and date are confirmed.
 - CV: `assets/documents/cv/Jannatun_Nayem_Jui_CV.pdf` is the current CV used by the hero and contact links.
 
 Do not add stock or generated photographs as fieldwork evidence, and do not add certificate details that are not on the original documents.
