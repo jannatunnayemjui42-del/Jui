@@ -32,7 +32,7 @@ themeButton.addEventListener("click", () => {
   document.documentElement.dataset.theme = nextTheme;
   themeButton.setAttribute("aria-pressed", String(nextTheme === "dark"));
   themeButton.setAttribute("aria-label", `Switch to ${isDark ? "dark" : "light"} mode`);
-  themeColor.setAttribute("content", isDark ? "#F7F5F0" : "#191C19");
+  themeColor.setAttribute("content", isDark ? "#AABBCB" : "#354B60");
 });
 
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
