@@ -15,10 +15,11 @@ Open `index.html` in a browser. The page is static HTML, CSS, and vanilla JavaSc
 
 ## Add your own assets
 
-- Fieldwork photos: the supplied Sundarbans and Pulses Research Centre photos are included in:
+- Fieldwork photos: the supplied photographs are included in:
   - `assets/images/fieldwork/sundarbans/kalagachia-field-visit.jpg`
+  - `assets/images/fieldwork/bsri/bsri-sugarcane-field-visit.jpg`
   - `assets/images/fieldwork/pulses-research-centre/pulses-research-centre-visit.jpg`
-  The BSRI photo placeholder remains until a photo is provided. Add any further original photographs to:
+  Add any further original photographs to:
   - `assets/images/fieldwork/sundarbans/`
   - `assets/images/fieldwork/bsri/`
   - `assets/images/fieldwork/pulses-research-centre/`
