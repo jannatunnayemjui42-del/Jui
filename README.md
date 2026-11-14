@@ -15,11 +15,14 @@ Open `index.html` in a browser. The page is static HTML, CSS, and vanilla JavaSc
 
 ## Add your own assets
 
-- Fieldwork photos: add original photographs to:
+- Fieldwork photos: the supplied Sundarbans and Pulses Research Centre photos are included in:
+  - `assets/images/fieldwork/sundarbans/kalagachia-field-visit.jpg`
+  - `assets/images/fieldwork/pulses-research-centre/pulses-research-centre-visit.jpg`
+  The BSRI photo placeholder remains until a photo is provided. Add any further original photographs to:
   - `assets/images/fieldwork/sundarbans/`
   - `assets/images/fieldwork/bsri/`
   - `assets/images/fieldwork/pulses-research-centre/`
-  Replace each clearly marked photo frame in `index.html` with an image and descriptive `alt` text. Use landscape images where possible.
+  Use descriptive `alt` text and landscape images where possible.
 - Certificate previews and originals: the three supplied certificates are in `assets/documents/certificates/` and are embedded in the gallery with links that open the original PDFs in a new tab. Add certificate images to `assets/images/certificates/`; add new PDF originals to `assets/documents/certificates/`. Create a gallery card only after the actual title, issuing organization, and date are confirmed.
 - CV: `assets/documents/cv/Jannatun_Nayem_Jui_CV.pdf` is the current CV used by the hero and contact links.
 
