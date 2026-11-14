@@ -2,6 +2,8 @@ document.documentElement.classList.add("js");
 
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".site-nav");
+const themeButton = document.querySelector(".theme-toggle");
+const themeColor = document.querySelector('meta[name="theme-color"]');
 
 function closeNavigation() {
   menuButton.setAttribute("aria-expanded", "false");
@@ -24,9 +26,42 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeNavigation();
 });
 
-document.querySelectorAll("[data-placeholder]").forEach((link) => {
-  link.addEventListener("click", (event) => event.preventDefault());
+themeButton.addEventListener("click", () => {
+  const isDark = document.documentElement.dataset.theme === "dark";
+  const nextTheme = isDark ? "light" : "dark";
+  document.documentElement.dataset.theme = nextTheme;
+  themeButton.setAttribute("aria-pressed", String(nextTheme === "dark"));
+  themeButton.setAttribute("aria-label", `Switch to ${isDark ? "dark" : "light"} mode`);
+  themeColor.setAttribute("content", isDark ? "#F7F5F0" : "#191C19");
 });
+
+const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
+const sections = navLinks
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
+
+function setActiveSection(sectionId) {
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") === `#${sectionId}`) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+if ("IntersectionObserver" in window) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visibleEntries = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((first, second) => second.intersectionRatio - first.intersectionRatio);
+    if (visibleEntries.length) setActiveSection(visibleEntries[0].target.id);
+  }, { rootMargin: "-18% 0px -65% 0px", threshold: [0, .1, .25, .5] });
+
+  sections.forEach((section) => sectionObserver.observe(section));
+} else {
+  setActiveSection("home");
+}
 
 const revealItems = document.querySelectorAll(".reveal");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

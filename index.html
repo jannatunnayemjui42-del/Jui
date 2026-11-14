@@ -1,35 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#FAF7F5">
-  <meta name="description" content="Jannatun Nayem Jui — Botany student at the University of Barishal, aspiring researcher.">
-  <title>Jannatun Nayem Jui | Botany Student &amp; Aspiring Researcher</title>
+  <meta name="theme-color" content="#F7F5F0">
+  <meta name="description" content="Jannatun Nayem Jui — final-year Botany student at the University of Barishal and aspiring researcher.">
+  <title>Jannatun Nayem Jui | Academic &amp; Professional Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Jannatun Nayem Jui — Home">
-      <span class="brand-mark" aria-hidden="true">JNJ</span>
+      <span class="brand-initials" aria-hidden="true">JNJ</span>
       <span>Jannatun Nayem Jui</span>
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+    <div class="header-controls">
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"/></svg>
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+      </button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#interests">Academic Interests</a>
+      <a href="#academics">Academics</a>
       <a href="#fieldwork">Fieldwork</a>
-      <a href="#practical-skills">Practical Skills</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
-      <a href="#beyond-academics">Beyond Academics</a>
+      <a href="#certifications">Certifications</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -38,40 +43,87 @@
     <section class="hero section" id="home" aria-labelledby="hero-title">
       <div class="hero-inner">
         <div class="hero-copy reveal">
-          <p class="eyebrow">University of Barishal <span aria-hidden="true">/</span> Department of Botany</p>
-          <h1 id="hero-title">Jannatun<br class="desktop-break"> Nayem Jui</h1>
+          <p class="eyebrow hero-affiliation">
+            <span>University of Barishal</span>
+            <span class="eyebrow-divider" aria-hidden="true">/</span>
+            <span>Department of Botany</span>
+          </p>
+          <h1 id="hero-title">Jannatun Nayem Jui</h1>
           <p class="hero-role">Botany Student <span aria-hidden="true">|</span> Aspiring Researcher</p>
           <p class="hero-intro">I am a Botany student with a deep appreciation for nature and a curiosity to understand the world around me. I enjoy exploring new ideas, learning independently, and developing my knowledge step by step. I believe in growing through continuous learning and new experiences.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#about">Explore My Profile</a>
+            <a class="button button-secondary" href="assets/documents/cv/Jannatun_Nayem_Jui_CV.pdf" target="_blank" rel="noopener" download>View My CV</a>
+            <a class="button button-text" href="#contact">Contact Me</a>
+          </div>
+          <div class="hero-socials" aria-label="Professional links">
+            <a href="https://www.linkedin.com/in/jannatun-nayem-jui/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/jannatunnayemjui42-del/Jui" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
         </div>
-        <div class="hero-aside reveal" aria-hidden="true">
-          <span class="hero-index">01</span>
-          <span class="hero-rule"></span>
-          <span class="hero-aside-text">Curiosity<br>in bloom</span>
+        <div class="hero-note reveal" aria-hidden="true">
+          <span class="hero-note-index">01</span>
+          <span class="hero-note-rule"></span>
+          <span class="hero-note-copy">Academic<br>Portfolio</span>
         </div>
       </div>
-      <a class="scroll-cue" href="#about"><span aria-hidden="true"></span>Scroll to explore</a>
     </section>
 
-    <section class="section section-paper" id="about" aria-labelledby="about-title">
-      <div class="section-inner about-layout">
+    <section class="section section-surface" id="about" aria-labelledby="about-title">
+      <div class="section-inner">
         <div class="section-heading reveal">
-          <p class="eyebrow">A little about my journey</p>
+          <p class="eyebrow">Profile</p>
           <h2 id="about-title">About Me</h2>
         </div>
-        <div class="about-copy reveal">
-          <p class="lead">I am Jannatun Nayem Jui, a final-year Botany student at the University of Barishal.</p>
-          <p>I enjoy exploring nature, learning about plant life, and discovering new ideas. I consider myself a self-learner who believes in continuous learning, personal growth, and developing knowledge step by step.</p>
-          <p>I aspire to grow through academic learning, research, and new experiences.</p>
+        <div class="about-layout">
+          <div class="about-copy reveal">
+            <p class="lead">I am Jannatun Nayem Jui, a final-year Botany student at the University of Barishal.</p>
+            <p>I enjoy exploring nature, learning about plant life, and discovering new ideas. I consider myself a self-learner who believes in continuous learning, personal growth, and developing knowledge step by step.</p>
+            <p>I aspire to grow through academic learning, research, and new experiences.</p>
+          </div>
+          <div class="about-details reveal">
+            <div class="detail-row"><span>Academic focus</span><strong>Botany</strong></div>
+            <div class="detail-row"><span>University</span><strong>University of Barishal</strong></div>
+            <div class="detail-row"><span>Approach</span><strong>Curiosity &amp; continuous learning</strong></div>
+          </div>
+        </div>
+        <div class="about-extension" id="beyond-academics">
+          <div class="subsection-heading reveal">
+            <p class="eyebrow">Outside the classroom</p>
+            <h3>Beyond Academics &amp; Future Vision</h3>
+          </div>
+          <div class="vision-grid">
+            <article class="vision-card reveal">
+              <span class="card-index">01</span>
+              <h4>Beyond Academics</h4>
+              <ul>
+                <li>Technology and AI</li>
+                <li>Leadership Activities</li>
+                <li>Continuous Self-Learning</li>
+                <li>Nature Exploration</li>
+              </ul>
+            </article>
+            <article class="vision-card reveal">
+              <span class="card-index">02</span>
+              <h4>Personal Philosophy</h4>
+              <blockquote>“I believe meaningful growth begins with curiosity, consistency, and the willingness to learn from the basics. Every new experience is an opportunity to improve and discover something more.”</blockquote>
+            </article>
+            <article class="vision-card reveal">
+              <span class="card-index">03</span>
+              <h4>Future Vision</h4>
+              <p>My goal is to continue developing myself through research, learning, and practical experiences. I aspire to build a meaningful career where I can combine scientific curiosity, professional skills, and leadership to make a positive contribution.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-blush" id="interests" aria-labelledby="interests-title">
+    <section class="section" id="academics" aria-labelledby="academics-title">
       <div class="section-inner">
         <div class="section-heading section-heading-wide reveal">
           <p class="eyebrow">Study, observation &amp; discovery</p>
-          <h2 id="interests-title">Academic Interests &amp; Research</h2>
-          <p class="section-intro">I have a strong interest in exploring different areas of my academic coursework in Botany. I also have a growing interest in research and a desire to learn more about the research process.</p>
+          <h2 id="academics-title">Academic Interests &amp; Research</h2>
+          <p class="section-intro">I am interested in exploring different areas of my academic coursework in Botany and have a growing interest in research and understanding the research process.</p>
         </div>
         <div class="interest-grid">
           <article class="interest-card reveal">
@@ -99,45 +151,77 @@
             <h3>Horticulture</h3>
           </article>
         </div>
+        <div class="practical-exposure">
+          <div class="subsection-heading reveal">
+            <p class="eyebrow">Learning by doing</p>
+            <h3>Academic &amp; Practical Exposure</h3>
+          </div>
+          <div class="practical-grid">
+            <article class="practical-card reveal">
+              <svg class="line-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M20 8h8m-6 0v13l-9 15a3 3 0 0 0 3 4h16a3 3 0 0 0 3-4l-9-15V8m-9 23h18M18 35h12"/></svg>
+              <h4>Microscope Observation</h4>
+              <p>Observing plant materials and structures through microscope work in academic learning.</p>
+            </article>
+            <article class="practical-card reveal">
+              <svg class="line-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39V14m0 8c-8 0-13-5-13-12 8 0 13 5 13 12Zm0 5c8 0 13-5 13-12-8 0-13 5-13 12ZM13 39h22"/></svg>
+              <h4>Herbarium Preparation</h4>
+              <p>Preparing and preserving plant specimens as part of botanical coursework.</p>
+            </article>
+            <article class="practical-card reveal">
+              <svg class="line-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39V12m0 13c-8 0-13-5-13-12 8 0 13 5 13 12Zm0-7c0-8 5-13 13-13 0 8-5 13-13 13ZM15 39h18"/></svg>
+              <h4>Plant Identification</h4>
+              <p>Learning to recognize and identify plants through observation and study.</p>
+            </article>
+            <article class="practical-card reveal">
+              <svg class="line-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="13"/><circle cx="24" cy="24" r="5"/><path d="m34 34 7 7M24 11V6m-13 18H6m36 0h-5"/></svg>
+              <h4>Microscopic Techniques &amp; Knowledge</h4>
+              <p>Developing familiarity with microscopic techniques through practical academic exposure.</p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section section-paper" id="fieldwork" aria-labelledby="fieldwork-title">
+    <section class="section section-surface" id="fieldwork" aria-labelledby="fieldwork-title">
       <div class="section-inner">
         <div class="section-heading section-heading-wide reveal">
-          <p class="eyebrow">Learning beyond the classroom</p>
-          <h2 id="fieldwork-title">Fieldwork &amp; Exploration</h2>
+          <p class="eyebrow">Academic exploration</p>
+          <h2 id="fieldwork-title">Fieldwork</h2>
+          <p class="section-intro">Field photographs have not been provided yet. The frames below are clearly marked so your own photographs can be added without using stock or generated images.</p>
         </div>
-        <div class="fieldwork-list">
-          <article class="fieldwork-item reveal">
-            <div class="photo-placeholder" role="img" aria-label="Photo placeholder for the Sundarbans field tour">
-              <span class="placeholder-label">Field photograph</span>
-              <span class="placeholder-path">assets/images/fieldwork/sundarbans/</span>
+        <div class="fieldwork-grid">
+          <article class="fieldwork-card reveal">
+            <div class="fieldwork-media" role="img" aria-label="Photo not provided yet for Exploring the Sundarbans">
+              <span class="media-index">01</span>
+              <span class="media-message">Field photograph needed</span>
+              <span class="media-path">assets/images/fieldwork/sundarbans/</span>
             </div>
-            <div class="fieldwork-copy">
-              <p class="eyebrow">Academic Year: Second Year</p>
+            <div class="fieldwork-info">
+              <p class="eyebrow">Second Year <span aria-hidden="true">·</span> Sundarbans</p>
               <h3>Exploring the Sundarbans</h3>
               <p>A university field tour to the Sundarbans, where I explored its diverse vegetation, mangrove ecosystems, and unique plant diversity. The experience offered an opportunity to observe nature beyond the classroom.</p>
             </div>
           </article>
-          <article class="fieldwork-item fieldwork-item-reverse reveal">
-            <div class="photo-placeholder" role="img" aria-label="Photo placeholder for the Bangladesh Sugarcrop Research Institute visit">
-              <span class="placeholder-label">Field photograph</span>
-              <span class="placeholder-path">assets/images/fieldwork/bsri/</span>
+          <article class="fieldwork-card reveal">
+            <div class="fieldwork-media" role="img" aria-label="Photo not provided yet for the Bangladesh Sugarcrop Research Institute visit">
+              <span class="media-index">02</span>
+              <span class="media-message">Field photograph needed</span>
+              <span class="media-path">assets/images/fieldwork/bsri/</span>
             </div>
-            <div class="fieldwork-copy">
-              <p class="eyebrow">Academic Year: Third Year</p>
-              <h3>Visit to Bangladesh Sugarcrop Research Institute (BSRI)</h3>
+            <div class="fieldwork-info">
+              <p class="eyebrow">Third Year <span aria-hidden="true">·</span> BSRI</p>
+              <h3>Bangladesh Sugarcrop Research Institute</h3>
               <p>An educational visit to the Bangladesh Sugarcrop Research Institute, where I learned about different sugarcane varieties, cultivation practices, seed materials, and weed management techniques.</p>
             </div>
           </article>
-          <article class="fieldwork-item reveal">
-            <div class="photo-placeholder" role="img" aria-label="Photo placeholder for the Pulses Research Centre visit">
-              <span class="placeholder-label">Field photograph</span>
-              <span class="placeholder-path">assets/images/fieldwork/pulses-research-centre/</span>
+          <article class="fieldwork-card reveal">
+            <div class="fieldwork-media" role="img" aria-label="Photo not provided yet for the Pulses Research Centre visit">
+              <span class="media-index">03</span>
+              <span class="media-message">Field photograph needed</span>
+              <span class="media-path">assets/images/fieldwork/pulses-research-centre/</span>
             </div>
-            <div class="fieldwork-copy">
-              <p class="eyebrow">Academic Year: Third Year</p>
+            <div class="fieldwork-info">
+              <p class="eyebrow">Third Year <span aria-hidden="true">·</span> Pulses Research Centre</p>
               <h3>Visit to Pulses Research Centre</h3>
               <p>Explored different pulse varieties and observed agricultural practices, from field-level cultivation to harvesting. This visit helped me gain practical insight into crop research and production.</p>
             </div>
@@ -146,150 +230,119 @@
       </div>
     </section>
 
-    <section class="section section-blush" id="practical-skills" aria-labelledby="practical-title">
-      <div class="section-inner">
-        <div class="section-heading section-heading-wide reveal">
-          <p class="eyebrow">Academic &amp; practical exposure</p>
-          <h2 id="practical-title">Learning Beyond the Classroom</h2>
-        </div>
-        <div class="practical-grid">
-          <article class="practical-card reveal">
-            <svg class="line-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M20 8h8m-6 0v13l-9 15a3 3 0 0 0 3 4h16a3 3 0 0 0 3-4l-9-15V8m-9 23h18M18 35h12"/></svg>
-            <h3>Microscope Observation</h3>
-            <p>Observing plant materials and structures through microscope work in academic learning.</p>
-          </article>
-          <article class="practical-card reveal">
-            <svg class="line-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39V14m0 8c-8 0-13-5-13-12 8 0 13 5 13 12Zm0 5c8 0 13-5 13-12-8 0-13 5-13 12ZM13 39h22"/></svg>
-            <h3>Herbarium Preparation</h3>
-            <p>Preparing and preserving plant specimens as part of botanical coursework.</p>
-          </article>
-          <article class="practical-card reveal">
-            <svg class="line-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 39V12m0 13c-8 0-13-5-13-12 8 0 13 5 13 12Zm0-7c0-8 5-13 13-13 0 8-5 13-13 13ZM15 39h18"/></svg>
-            <h3>Plant Identification</h3>
-            <p>Learning to recognize and identify plants through observation and study.</p>
-          </article>
-          <article class="practical-card reveal">
-            <svg class="line-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="13"/><circle cx="24" cy="24" r="5"/><path d="m34 34 7 7M24 11V6m-13 18H6m36 0h-5"/></svg>
-            <h3>Microscopic Techniques &amp; Knowledge</h3>
-            <p>Developing familiarity with microscopic techniques through practical academic exposure.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-paper" id="experience" aria-labelledby="experience-title">
+    <section class="section" id="experience" aria-labelledby="experience-title">
       <div class="section-inner experience-layout">
         <div class="section-heading reveal">
           <p class="eyebrow">YSSE</p>
-          <h2 id="experience-title">My Journey in Leadership &amp; Involvement</h2>
-          <p class="org-name">YSSE</p>
+          <h2 id="experience-title">Leadership &amp; Professional Experience</h2>
+          <p class="section-intro">Leadership and involvement across the Communication and IT departments at YSSE.</p>
         </div>
         <div class="experience-content reveal">
           <ol class="timeline">
             <li class="timeline-item">
               <span class="timeline-marker" aria-hidden="true"></span>
-              <p class="timeline-department">IT Department, YSSE <span class="current-label">Current Position</span></p>
+              <p class="timeline-department">YSSE <span class="current-label">Current Position</span></p>
               <h3>Assistant Head of IT Department</h3>
+              <p class="timeline-detail">IT Department</p>
             </li>
             <li class="timeline-item">
               <span class="timeline-marker" aria-hidden="true"></span>
-              <p class="timeline-department">Communication Department, YSSE</p>
+              <p class="timeline-department">YSSE</p>
               <h3>Head of SMM</h3>
+              <p class="timeline-detail">Communication Department</p>
             </li>
             <li class="timeline-item">
               <span class="timeline-marker" aria-hidden="true"></span>
-              <p class="timeline-department">Communication Department, YSSE</p>
+              <p class="timeline-department">YSSE</p>
               <h3>Management Trainee (MT)</h3>
+              <p class="timeline-detail">Communication Department</p>
             </li>
             <li class="timeline-item">
               <span class="timeline-marker" aria-hidden="true"></span>
-              <p class="timeline-department">Communication Department, YSSE</p>
+              <p class="timeline-department">YSSE</p>
               <h3>Intern</h3>
+              <p class="timeline-detail">Communication Department</p>
             </li>
           </ol>
-          <div class="programme-card">
+          <article class="programme-card">
             <p class="eyebrow">Additional Programme</p>
             <h3>Aspire Leadership Programme — Cohort 3</h3>
             <p>Completed</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-surface" id="skills" aria-labelledby="skills-title">
+      <div class="section-inner">
+        <div class="section-heading section-heading-wide reveal">
+          <p class="eyebrow">Skills &amp; Expertise</p>
+          <h2 id="skills-title">Skills</h2>
+        </div>
+        <div class="skill-groups">
+          <section class="skill-group reveal" aria-labelledby="office-skills-title">
+            <h3 id="office-skills-title">Office Applications</h3>
+            <ul class="skill-list">
+              <li>Basic Microsoft Excel</li>
+              <li>Microsoft Word</li>
+            </ul>
+          </section>
+          <section class="skill-group reveal" aria-labelledby="communication-skills-title">
+            <h3 id="communication-skills-title">Communication &amp; Digital Skills</h3>
+            <ul class="skill-list">
+              <li>Digital Marketing</li>
+              <li>Public Speaking</li>
+              <li>Basic Content Writing</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="certifications" aria-labelledby="certifications-title">
+      <div class="section-inner">
+        <div class="section-heading section-heading-wide reveal">
+          <p class="eyebrow">Certificates &amp; learning</p>
+          <h2 id="certifications-title">Certifications &amp; Training</h2>
+          <p class="section-intro">No certificate files have been provided yet. Original PDFs or certificate images can be added here when available; no certificate details or previews have been invented.</p>
+        </div>
+        <div class="certificate-empty reveal">
+          <span class="empty-index">01</span>
+          <div>
+            <h3>Certificate gallery awaiting original files</h3>
+            <p>Add certificate PDFs to <code>assets/documents/certificates/</code> and certificate images to <code>assets/images/certificates/</code>. Each verified file can then be shown with its title, issuing organization, and completion date.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-blush" id="skills" aria-labelledby="skills-title">
-      <div class="section-inner">
-        <div class="section-heading section-heading-wide reveal">
-          <p class="eyebrow">Skills &amp; Expertise</p>
-          <h2 id="skills-title">Skills &amp; Expertise</h2>
-        </div>
-        <ul class="skills-grid">
-          <li class="skill-card reveal">Basic Microsoft Excel</li>
-          <li class="skill-card reveal">Microsoft Word</li>
-          <li class="skill-card reveal">Digital Marketing</li>
-          <li class="skill-card reveal">Public Speaking</li>
-          <li class="skill-card reveal">Basic Content Writing</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section section-paper" id="beyond-academics" aria-labelledby="beyond-title">
-      <div class="section-inner">
-        <div class="section-heading section-heading-wide reveal">
-          <p class="eyebrow">Personal interests &amp; direction</p>
-          <h2 id="beyond-title">Beyond Academics &amp; Future Vision</h2>
-        </div>
-        <div class="vision-grid">
-          <article class="vision-card reveal">
-            <span class="vision-number">01</span>
-            <h3>Beyond Academics</h3>
-            <ul>
-              <li>Technology and AI</li>
-              <li>Leadership Activities</li>
-              <li>Continuous Self-Learning</li>
-              <li>Nature Exploration</li>
-            </ul>
-          </article>
-          <article class="vision-card vision-quote reveal">
-            <span class="vision-number">02</span>
-            <h3>Personal Philosophy</h3>
-            <blockquote>“I believe meaningful growth begins with curiosity, consistency, and the willingness to learn from the basics. Every new experience is an opportunity to improve and discover something more.”</blockquote>
-          </article>
-          <article class="vision-card reveal">
-            <span class="vision-number">03</span>
-            <h3>Future Vision</h3>
-            <p>My goal is to continue developing myself through research, learning, and practical experiences. I aspire to build a meaningful career where I can combine scientific curiosity, professional skills, and leadership to make a positive contribution.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-blush contact-section" id="contact" aria-labelledby="contact-title">
+    <section class="section section-surface" id="contact" aria-labelledby="contact-title">
       <div class="section-inner">
         <div class="section-heading section-heading-wide reveal">
           <p class="eyebrow">Contact &amp; Connect</p>
-          <h2 id="contact-title">Contact &amp; Connect</h2>
+          <h2 id="contact-title">Let’s Connect</h2>
           <p class="section-intro">Open to meaningful connections, learning opportunities, and professional collaborations.</p>
         </div>
         <div class="contact-grid">
           <a class="contact-card reveal" href="https://www.linkedin.com/in/jannatun-nayem-jui/" target="_blank" rel="noopener noreferrer">
-            <span class="contact-icon" aria-hidden="true">in</span>
-            <span class="contact-copy"><strong>LinkedIn</strong><span>Connect with me professionally.</span></span>
-            <span class="card-arrow" aria-hidden="true">↗</span>
+            <span class="contact-label">Professional network</span>
+            <strong>LinkedIn</strong>
+            <span>Connect with me professionally.</span>
           </a>
-          <a class="contact-card reveal" href="assets/documents/Jannatun_Nayem_Jui_CV.pdf" target="_blank" rel="noopener" download>
-            <svg class="contact-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h5M9 13h6m-6 4h6"/></svg>
-            <span class="contact-copy"><strong>View My CV</strong><span>Explore my academic background, skills, and experience.</span></span>
-            <span class="card-arrow" aria-hidden="true">↗</span>
+          <a class="contact-card reveal" href="assets/documents/cv/Jannatun_Nayem_Jui_CV.pdf" target="_blank" rel="noopener" download>
+            <span class="contact-label">PDF document</span>
+            <strong>View My CV</strong>
+            <span>Explore my academic background, skills, and experience.</span>
           </a>
-          <a class="contact-card reveal" href="#" data-placeholder aria-label="Email — address not added yet">
-            <svg class="contact-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m4 7 8 6 8-6"/></svg>
-            <span class="contact-copy"><strong>Email Me</strong><span>Feel free to reach out.</span></span>
-            <span class="card-arrow" aria-hidden="true">↗</span>
+          <a class="contact-card reveal" href="mailto:jannatunnayemjui42@gmail.com">
+            <span class="contact-label">Email</span>
+            <strong>Email Me</strong>
+            <span>Feel free to reach out.</span>
           </a>
-          <a class="contact-card reveal" href="#" data-placeholder aria-label="GitHub — link not added yet">
-            <svg class="contact-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1-4-2-6-2m12 4v-3.5a3 3 0 0 0-.8-2.3c2.7-.3 5.6-1.3 5.6-6A4.7 4.7 0 0 0 18.5 6 4.3 4.3 0 0 0 18.4 3S17.4 2.7 15 4.5a13 13 0 0 0-6 0C6.6 2.7 5.6 3 5.6 3A4.3 4.3 0 0 0 5.5 6 4.7 4.7 0 0 0 4.2 9.2c0 4.7 2.9 5.7 5.6 6A3 3 0 0 0 9 17.5V21"/></svg>
-            <span class="contact-copy"><strong>GitHub</strong><span>Explore my projects and technical work.</span></span>
-            <span class="card-arrow" aria-hidden="true">↗</span>
+          <a class="contact-card reveal" href="https://github.com/jannatunnayemjui42-del/Jui" target="_blank" rel="noopener noreferrer">
+            <span class="contact-label">Code &amp; projects</span>
+            <strong>GitHub</strong>
+            <span>Explore my projects and technical work.</span>
           </a>
         </div>
       </div>
@@ -298,7 +351,24 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p class="footer-note">Designed with curiosity and a passion for continuous learning.</p>
+      <div class="footer-identity">
+        <a class="footer-name" href="#home">Jannatun Nayem Jui</a>
+        <p>University of Barishal · Department of Botany</p>
+      </div>
+      <nav class="footer-nav" aria-label="Quick links">
+        <a href="#about">About</a>
+        <a href="#academics">Academics</a>
+        <a href="#beyond-academics">Beyond Academics</a>
+        <a href="#fieldwork">Fieldwork</a>
+        <a href="#experience">Experience</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-socials" aria-label="Social and contact links">
+        <a href="https://www.linkedin.com/in/jannatun-nayem-jui/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/jannatunnayemjui42-del/Jui" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:jannatunnayemjui42@gmail.com">Email</a>
+      </div>
       <p class="copyright">© 2026 Jannatun Nayem Jui. All Rights Reserved.</p>
     </div>
   </footer>
